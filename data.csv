@@ -1,0 +1,87 @@
+name,gender,study_hours_per_day,attendance_percentage,screen_time_hours,entertainment_hours,stress_level,motivation_level,exam_anxiety,major,exam_score,source
+Ishaan Desai,Female,5.2,91.1,2.6,3.1,4.4,5.4,7.4,Psychology,68.8,CSV
+Navya Shah,Female,4.1,73.9,3.8,2.8,7.1,5.9,5.4,Biology,52.3,CSV
+Sara Desai,Female,4.1,72.0,2.0,2.9,7.7,4.3,5.3,Business,50.3,CSV
+Priya Shah,Female,5.5,62.8,2.5,2.5,2.1,4.0,6.2,Psychology,65.0,CSV
+Ananya,Female,1.5,61.5,6.6,2.9,4.7,4.2,4.1,Science,35.0,CSV
+Krishna Shah,Female,4.2,73.8,6.2,4.0,8.6,5.1,3.1,Engineering,48.8,CSV
+Dhruv Joshi,Female,7.7,74.8,6.1,2.2,8.6,4.3,5.9,Computer Science,71.7,CSV
+Kiara Shah,Female,4.6,68.7,1.2,2.2,3.0,4.8,2.4,Psychology,64.4,CSV
+Atharva Desai,Female,7.4,69.1,5.1,3.5,3.2,6.2,2.2,Engineering,87.2,CSV
+Vivaan Desai,Male,4.5,76.8,2.6,2.9,4.2,8.1,3.9,Computer Science,70.1,CSV
+Aryan Patel,Male,1.9,89.4,2.8,2.2,8.8,8.4,3.9,Business,52.4,CSV
+Navya Patel,Male,7.9,74.1,3.8,3.6,8.2,6.8,2.3,Business,89.6,CSV
+Ishaan Mehta,Male,7.5,96.7,1.7,2.5,3.6,5.3,4.4,Engineering,89.7,CSV
+Vivaan Shah,Female,1.7,79.8,5.0,3.7,7.4,3.6,7.8,Mathematics,35.0,CSV
+Dhruv Patel,Male,1.5,76.3,5.5,1.6,4.5,3.4,4.4,Mathematics,35.0,CSV
+Vivaan Desai,Female,1.8,66.1,1.5,3.6,5.6,5.5,2.0,Business,36.6,CSV
+Kiara Mehta,Male,1.3,95.0,1.1,2.6,3.7,4.3,5.8,Business,38.0,CSV
+Myra Mehta,Female,2.7,76.5,3.2,3.9,4.6,7.2,3.6,Computer Science,51.6,CSV
+Sneha Shah,Female,7.1,70.4,5.1,1.8,7.7,6.1,2.2,Business,72.2,CSV
+Myra Mehta,Female,2.3,77.2,2.3,3.2,2.4,7.7,5.8,Business,50.2,CSV
+Kabir Patel,Female,2.3,92.3,6.2,1.4,2.7,7.1,6.9,Business,46.4,CSV
+Riya Joshi,Female,5.7,86.3,4.2,1.5,7.2,6.5,3.3,Biology,77.2,CSV
+Aryan Joshi,Male,2.5,78.0,6.0,2.2,4.7,8.3,6.2,Computer Science,49.5,CSV
+Myra Joshi,Male,1.4,70.9,4.8,3.4,5.1,8.8,5.0,Engineering,36.9,CSV
+Diya Patel,Female,3.8,73.8,2.4,2.4,7.2,5.6,4.7,Mathematics,48.7,CSV
+Diya Patel,Female,7.1,84.2,4.5,3.9,4.1,6.5,4.3,Engineering,88.6,CSV
+Pooja Joshi,Female,2.0,70.5,2.7,1.8,5.7,4.0,6.0,Engineering,36.8,CSV
+Atharva Desai,Female,2.2,78.9,3.2,1.1,8.8,5.2,3.8,Computer Science,39.8,CSV
+Sneha Desai,Male,1.0,97.3,1.5,2.1,6.4,8.8,5.2,Biology,52.1,CSV
+Aryan Patel,Male,6.1,64.8,2.1,1.6,4.3,5.4,4.8,Engineering,73.7,CSV
+Aryan Mehta,Female,2.2,72.5,4.5,2.3,7.0,4.4,7.6,Engineering,35.0,CSV
+Aryan Joshi,Male,2.4,90.4,2.2,2.3,6.5,5.6,3.4,Psychology,46.6,CSV
+Anaya Desai,Female,1.9,94.2,4.2,1.4,6.5,4.6,5.6,Biology,35.0,CSV
+Krishna Joshi,Female,3.6,67.7,1.5,1.9,3.5,5.0,3.6,Computer Science,52.0,CSV
+Kabir Shah,Male,3.9,82.1,3.9,4.0,2.4,4.2,5.8,Engineering,58.9,CSV
+Shaurya Joshi,Male,4.7,91.7,4.7,1.9,8.3,6.5,2.9,Computer Science,63.1,CSV
+Kunal Mehta,Female,6.9,61.9,4.6,3.5,4.6,4.4,4.3,Engineering,67.4,CSV
+Neha Joshi,Female,8.0,84.6,2.2,2.7,2.4,4.9,2.5,Psychology,91.3,CSV
+Arjun Shah,Male,5.4,77.1,4.7,0.8,8.0,8.8,5.7,Engineering,74.0,CSV
+Reyansh Joshi,Female,3.1,73.2,2.0,2.7,3.3,8.1,4.0,Biology,61.9,CSV
+Sneha Patel,Female,7.2,72.3,6.1,2.6,8.8,3.6,3.0,Computer Science,67.1,CSV
+Shaurya Patel,Male,6.8,99.7,3.7,0.6,6.3,7.0,3.5,Psychology,88.1,CSV
+Atharva Mehta,Female,7.1,93.8,4.2,3.6,4.7,3.7,7.1,Mathematics,81.4,CSV
+Aditya Joshi,Male,1.2,68.3,5.7,2.1,8.1,5.2,5.4,Mathematics,35.0,CSV
+Rudra Patel,Female,5.4,74.3,1.4,1.2,5.4,5.3,2.1,Business,70.6,CSV
+Krishna Shah,Female,6.5,76.1,4.9,2.2,7.6,3.4,5.0,Mathematics,60.8,CSV
+Aryan Desai,Female,7.7,89.8,5.4,1.4,7.5,7.2,5.6,Computer Science,88.6,CSV
+Shaurya Shah,Male,2.3,93.4,2.1,2.1,3.3,4.2,7.8,Biology,44.4,CSV
+Navya Patel,Female,4.7,67.6,5.1,2.3,5.0,5.5,2.7,Engineering,55.3,CSV
+Aarav Mehta,Male,7.8,63.1,1.6,2.2,5.6,8.3,2.9,Mathematics,92.5,CSV
+Ishaan Joshi,Female,6.1,64.0,5.8,2.6,5.3,7.3,6.7,Mathematics,71.9,CSV
+Anika Desai,Male,1.4,86.6,3.8,1.7,5.0,7.7,4.8,Biology,41.6,CSV
+Meera Mehta,Male,3.6,95.7,6.6,3.5,3.0,3.5,6.5,Business,43.2,CSV
+Krishna Shah,Female,4.9,76.0,1.1,1.1,2.2,4.8,2.5,Psychology,66.4,CSV
+Reyansh Patel,Female,2.2,90.1,2.7,3.1,7.0,5.3,3.1,Psychology,43.3,CSV
+Aadhya Patel,Male,4.2,78.1,4.8,3.5,5.7,7.2,6.7,Psychology,55.7,CSV
+Riya,Male,5.8,60.9,3.4,1.9,6.4,7.1,7.4,Science,62.6,CSV
+Rahul,Male,2.2,67.7,4.5,1.1,3.2,6.9,5.3,Science,42.4,CSV
+Priya,Male,6.6,65.6,4.1,2.1,3.3,7.6,2.6,Arts,84.4,CSV
+Amit,Male,5.6,88.2,5.6,3.1,7.8,5.3,5.3,Business,70.0,CSV
+Neha,Male,3.2,62.4,5.3,4.1,7.9,8.1,7.2,Arts,42.6,CSV
+Arjun,Female,3.0,72.4,5.4,3.8,6.1,3.4,5.8,Commerce,36.6,CSV
+Kavya,Female,4.8,69.4,6.6,3.8,3.3,4.9,6.6,Arts,50.3,CSV
+Vikram,Male,4.4,62.3,6.6,3.3,6.3,4.3,5.0,Commerce,48.2,CSV
+Ananya,Female,3.6,68.6,4.8,2.1,5.5,8.4,4.4,Business,55.5,CSV
+Rohan,Male,5.0,86.5,6.3,1.6,3.0,7.1,5.6,Business,70.9,CSV
+Simran,Male,3.5,79.4,6.7,3.7,2.7,8.3,6.5,Science,62.1,CSV
+Kunal,Female,3.8,65.5,2.0,3.9,6.3,8.8,6.6,Arts,61.7,CSV
+Pooja,Male,7.1,77.8,3.0,2.5,3.0,8.7,7.5,Engineering,98.0,CSV
+Aditya,Female,2.1,92.5,6.4,4.3,3.8,3.3,7.3,Engineering,40.9,CSV
+Sneha,Male,6.9,94.2,4.7,1.5,6.0,8.7,3.0,Commerce,97.3,CSV
+Dev,Male,7.6,86.4,5.4,3.9,4.4,7.0,4.2,Science,97.9,CSV
+Isha,Female,3.5,62.2,2.1,3.2,5.5,3.0,6.2,Science,37.6,CSV
+Varun,Male,7.2,62.5,3.2,3.7,3.3,3.8,7.6,Commerce,74.2,CSV
+Meera,Female,6.7,88.3,3.0,1.4,4.6,5.5,4.8,Science,89.1,CSV
+Sahil,Female,4.4,71.9,6.3,2.0,3.1,5.7,4.5,Science,56.2,CSV
+Tanvi,Female,4.7,90.1,4.8,1.2,8.0,8.0,7.8,Commerce,70.9,CSV
+Nikhil,Male,4.4,76.8,6.3,4.6,3.0,3.0,4.3,Arts,56.9,CSV
+Aarav,Female,4.5,93.5,7.0,3.2,6.3,3.9,3.8,Arts,61.8,CSV
+Diya,Female,2.3,80.4,4.5,4.4,2.9,8.8,2.5,Commerce,57.5,CSV
+Krishna,Male,4.4,93.0,4.8,3.3,2.2,3.5,5.9,Arts,63.6,CSV
+Ritika,Female,3.2,85.1,3.2,2.6,6.0,4.8,3.9,Science,56.5,CSV
+Manav,Female,4.7,94.9,7.0,1.3,3.3,4.6,7.6,Arts,65.1,CSV
+Shreya,Male,3.7,75.3,4.7,2.2,7.9,7.8,5.2,Science,57.3,CSV
+Yash,Female,7.6,64.7,2.6,1.4,5.3,4.6,5.6,Arts,82.8,CSV
+Aisha,Female,5.0,68.8,6.5,1.2,5.8,8.0,2.3,Arts,65.4,CSV

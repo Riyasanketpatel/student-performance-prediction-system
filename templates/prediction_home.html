@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Prediction</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+.container{
+width:80%;
+margin:auto;
+padding:60px;
+text-align:center;
+}
+
+h1{
+margin-bottom:50px;
+}
+
+.options{
+display:flex;
+justify-content:space-between;
+}
+
+.card{
+background:white;
+padding:50px;
+width:45%;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+button{
+padding:14px 28px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+p{
+color:#555;
+margin-bottom:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="position:relative; text-align:center;">
+<a href="/dashboard" style="position:absolute; left:20px; text-decoration:none; color:#333; font-size:26px; font-weight:bold;">⮜</a>
+<h1>Student Performance Prediction</h1>
+
+<div class="options">
+
+<div class="card">
+
+<h2>Single Student Prediction</h2>
+
+<p>
+Enter individual student academic habits and predict their expected exam score.
+</p>
+
+<a href="/single_prediction">
+<button>Predict Student Score</button>
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h2>Bulk Dataset Prediction</h2>
+
+<p>
+Upload a CSV or Excel file and generate predictions for multiple students at once.
+</p>
+
+<a href="/bulk_prediction">
+<button>Upload Dataset</button>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

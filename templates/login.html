@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Performance System - Login</title>
+
+<style>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+height:100vh;
+display:flex;
+}
+
+/* LEFT SIDE INFO */
+
+.left{
+width:50%;
+background:linear-gradient(135deg,#4f46e5,#3b82f6);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:60px;
+}
+
+.left h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.left p{
+font-size:18px;
+line-height:1.6;
+opacity:0.95;
+}
+
+/* RIGHT SIDE LOGIN */
+
+.right{
+width:50%;
+background:#f4f6f9;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* LOGIN CARD */
+
+.login-box{
+background:white;
+padding:45px;
+width:350px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.login-box h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+background:#3b82f6;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+.error{
+color:red;
+text-align:center;
+margin-top:10px;
+}
+
+.system-name{
+font-weight:bold;
+font-size:34px;
+margin-bottom:40px;
+line-height:1.3;
+letter-spacing:1px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LEFT SIDE -->
+
+<div class="left">
+
+<div class="system-name">
+Student Performance 
+Prediction System
+</div>
+
+<h1>Smart Academic Analytics</h1>
+
+<p>
+This system analyzes student habits such as study hours, attendance,
+stress levels, and motivation to predict academic performance and
+provide insights for improvement.
+</p>
+
+</div>
+
+
+<!-- RIGHT SIDE -->
+
+<div class="right">
+
+<div class="login-box">
+
+<h2>Login</h2>
+
+<form method="POST">
+
+<input type="text" name="username" placeholder="Username" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<p class="error">{{error}}</p>
+
+</div>
+
+</div>
+
+</body>
+</html>

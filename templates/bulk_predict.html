@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>Bulk Prediction</title>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:0;
+}
+
+.container{
+width:70%;
+margin:auto;
+margin-top:60px;
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+.upload-box{
+border:2px dashed #007bff;
+padding:40px;
+text-align:center;
+border-radius:10px;
+background:#fafafa;
+margin-bottom:30px;
+}
+
+input[type=file]{
+margin-top:20px;
+}
+
+button{
+margin-top:25px;
+padding:14px 30px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+.info{
+background:#f1f5ff;
+padding:20px;
+border-radius:8px;
+margin-top:25px;
+}
+
+.info h3{
+margin-top:0;
+}
+
+ul{
+margin-top:10px;
+}
+
+.back{
+position:absolute;
+left:30px;
+top:25px;
+font-size:24px;
+text-decoration:none;
+color:#333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="back" href="/prediction">⮜</a>
+
+<div class="container">
+
+<h1>Bulk Student Score Prediction</h1>
+
+<div class="upload-box">
+
+<p><b>Upload a dataset to predict exam scores for multiple students.</b></p>
+
+<form action="/bulk_predict" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="dataset" accept=".csv,.xlsx" required>
+
+<br>
+
+<button type="submit">Run Prediction</button>
+
+</form>
+
+</div>
+
+<div class="info">
+
+<h3>Required Dataset Columns</h3>
+
+<p>Your dataset should contain the following fields:</p>
+
+<ul>
+
+<li>study_hours_per_day</li>
+<li>attendance_percentage</li>
+<li>screen_time</li>
+<li>entertainment_hours</li>
+<li>stress_level</li>
+<li>exam_anxiety</li>
+<li>previous_gpa</li>
+<li>motivation_level</li>
+<li>major (optional)</li>
+
+</ul>
+
+</div>
+
+<div class="info">
+
+<h3>Notes</h3>
+
+<ul>
+
+<li>Previous GPA can be entered on a <b>0–10 scale</b>. The system will automatically convert it to the <b>0–4 scale</b> used during training.</li>
+
+<li>If your dataset contains <b>social_media_hours</b> and <b>netflix_hours</b>, the system will automatically combine them into <b>entertainment_hours</b>.</li>
+
+<li>The output dataset will contain a new column called <b>predicted_exam_score</b>.</li>
+
+</ul>
+
+</div>
+
+{% if download_ready %}
+
+<br><br>
+
+<a href="/download_result">
+<button>Download Predicted Dataset</button>
+</a>
+
+{% endif %}
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>EDA Analysis</title>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:0;
+}
+
+/* page container */
+
+.container{
+width:95%;
+margin:auto;
+padding:40px;
+}
+
+/* header */
+
+.header{
+display:flex;
+align-items:center;
+margin-bottom:40px;
+}
+
+.header a{
+text-decoration:none;
+font-size:26px;
+font-weight:bold;
+color:#333;
+margin-right:20px;
+}
+
+.header h1{
+margin:0;
+}
+
+/* graph cards */
+
+.graph-card{
+background:white;
+padding:25px;
+margin-bottom:40px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<a href="/dashboard">⮜</a>
+<h1>Exploratory Data Analysis</h1>
+</div>
+
+
+
+<div class="insight-card">
+
+<h2>Key Insights</h2>
+
+<ul>
+{% for i in insights %}
+<li>{{i}}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+
+
+<div class="graph-card">
+{{chart1|safe}}
+</div>
+
+<div class="graph-card">
+{{chart2|safe}}
+</div>
+
+<div class="graph-card">
+{{chart3|safe}}
+</div>
+
+<div class="graph-card">
+{{chart4|safe}}
+</div>
+
+<div class="graph-card">
+{{chart5|safe}}
+</div>
+
+<div class="graph-card">
+{{chart6|safe}}
+</div>
+
+<div class="graph-card">
+{{chart7|safe}}
+</div>
+
+<div class="graph-card">
+{{chart8|safe}}
+</div>
+
+<div class="graph-card">
+{{chart9|safe}}
+</div>
+
+</div>
+
+</body>
+</html>

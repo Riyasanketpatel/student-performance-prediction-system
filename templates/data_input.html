@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Data</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+.container{
+width:75%;
+margin:auto;
+padding:60px;
+text-align:center;
+}
+
+/* grid layout */
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:40px;
+}
+
+/* card style */
+
+.card{
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+button{
+padding:14px 28px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+p{
+margin-bottom:25px;
+color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="position:relative;">
+<a href="/dashboard" style="position:absolute; left:0px; text-decoration:none; color:#333; font-size:26px; font-weight:bold;">⮜</a>
+Student Data Management
+</h2>
+
+<div class="options">
+
+<!-- Upload Dataset -->
+<div class="card">
+<h2>Upload Dataset</h2>
+<p>Upload a CSV file containing student academic data.</p>
+
+<a href="/upload_csv">
+<button>Upload CSV</button>
+</a>
+</div>
+
+<!-- Add Student -->
+<div class="card">
+<h2>Add Student</h2>
+<p>Enter a single student's academic data manually.</p>
+
+<a href="/student_entry">
+<button>Add Student</button>
+</a>
+</div>
+
+<!-- View Students -->
+<div class="card">
+<h2>View Students</h2>
+<p>See all student records.</p>
+
+<a href="/view_students">
+<button>View Students</button>
+</a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

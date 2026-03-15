@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Prediction Result</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+padding:0;
+}
+
+.container{
+width:650px;
+margin:auto;
+margin-top:60px;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+/* circular score */
+.circle{
+width:160px;
+height:160px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-size:32px;
+font-weight:bold;
+color:white;
+}
+
+/* performance colors */
+
+.excellent{
+background:#28a745;
+}
+
+.good{
+background:#007bff;
+}
+
+.average{
+background:#ffc107;
+color:black;
+}
+
+.poor{
+background:#dc3545;
+}
+
+/* performance text */
+
+.performance{
+font-size:22px;
+margin-top:20px;
+margin-bottom:30px;
+}
+
+/* suggestions */
+
+ul{
+text-align:left;
+margin-top:10px;
+}
+
+/* AI insight box */
+
+.insight-box{
+margin-top:25px;
+padding:15px;
+background:#f1f5ff;
+border-left:4px solid #007bff;
+border-radius:6px;
+font-size:14px;
+text-align:left;
+}
+
+/* buttons */
+
+.buttons{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:15px;
+}
+
+.btn{
+padding:12px 20px;
+border:none;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+text-decoration:none;
+color:white;
+}
+
+.btn-primary{
+background:#007bff;
+}
+
+.btn-primary:hover{
+background:#0056b3;
+}
+
+.btn-secondary{
+background:#6c757d;
+}
+
+.btn-secondary:hover{
+background:#545b62;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Predicted Exam Score</h2>
+
+{% if performance == "Excellent" %}
+<div class="circle excellent">{{score}}</div>
+{% elif performance == "Good" %}
+<div class="circle good">{{score}}</div>
+{% elif performance == "Average" %}
+<div class="circle average">{{score}}</div>
+{% else %}
+<div class="circle poor">{{score}}</div>
+{% endif %}
+
+<div class="performance">
+Performance Level: <b>{{performance}}</b>
+</div>
+
+<h3>Suggestions</h3>
+
+<ul>
+
+{% for s in suggestions %}
+<li>{{s}}</li>
+{% endfor %}
+
+</ul>
+
+
+<div class="insight-box">
+
+<b>AI Insight:</b>
+
+Based on the provided study habits and academic indicators, the machine learning model predicts the student's performance level.  
+Key factors influencing this prediction include **study hours, attendance, stress level, motivation, and previous GPA**.
+
+</div>
+
+
+<div class="buttons">
+
+<a href="/single_prediction" class="btn btn-primary">
+Predict Again
+</a>
+
+<a href="/dashboard" class="btn btn-secondary">
+Go to Dashboard
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

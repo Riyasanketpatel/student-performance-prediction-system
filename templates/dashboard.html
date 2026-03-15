@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Analytics Dashboard</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+/* TOP BAR */
+
+.top-bar{
+    display:flex;
+    justify-content:flex-end;
+    padding:20px 40px;
+}
+
+.logout{
+    text-decoration:none;
+    background:#ef4444;
+    color:white;
+    padding:8px 18px;
+    border-radius:8px;
+    font-size:14px;
+}
+
+/* MAIN */
+
+.dashboard{
+    text-align:center;
+    padding:30px 20px 60px 20px;
+}
+
+/* TITLE */
+
+.dashboard h1{
+    font-size:40px;
+    margin-bottom:8px;
+}
+
+.dashboard p{
+    color:#64748b;
+    margin-bottom:40px;
+}
+
+/* STATS */
+
+.stats-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    max-width:900px;
+    margin:0 auto 45px auto;
+}
+
+.stat-card{
+    background:white;
+    padding:18px;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.25s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+}
+
+.stat-card h3{
+    font-size:14px;
+    color:#6b7280;
+}
+
+.stat-card p{
+    font-size:28px;
+    font-weight:700;
+    color:#1e293b;
+    margin-top:5px;
+}
+
+/* ACTION CARDS */
+
+.card-container{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+/* PROFESSIONAL CARD */
+
+.card{
+    width:240px;
+    height:160px;
+    border-radius:16px;
+    text-decoration:none;
+    color:#1e293b;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+    box-shadow:0 12px 25px rgba(0,0,0,0.08);
+
+    transition:0.35s;
+}
+
+.card span{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.card-title{
+    font-weight:600;
+    font-size:16px;
+}
+
+/* HOVER */
+
+.card:hover{
+    transform:translateY(-10px) scale(1.04);
+    background:linear-gradient(135deg,#3b82f6,#6366f1);
+    color:white;
+    box-shadow:0 20px 45px rgba(59,130,246,0.25);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<a href="/" class="logout">Logout</a>
+</div>
+
+<div class="dashboard">
+
+<h1>Analytics Dashboard</h1>
+<p>Explore student behaviour patterns and predict academic performance</p>
+
+
+<div class="stats-container">
+
+<div class="stat-card">
+<h3>Total Students</h3>
+<p>{{ total_students }}</p>
+</div>
+
+<div class="stat-card">
+<h3>Average Marks</h3>
+<p>{{ avg_marks }}</p>
+</div>
+
+<div class="stat-card">
+<h3>Avg Study Hours</h3>
+<p>{{ avg_study_hours }}</p>
+</div>
+
+<div class="stat-card">
+<h3>Avg Attendance</h3>
+<p>{{ avg_attendance }}</p>
+</div>
+
+</div>
+
+<!-- ACTION CARDS -->
+
+<div class="card-container">
+
+<a href="/upload" class="card">
+<span>📂</span>
+<div class="card-title">Upload Dataset</div>
+</a>
+
+<a href="/eda" class="card">
+<span>📊</span>
+<div class="card-title">EDA Analysis</div>
+</a>
+
+<a href="/prediction" class="card">
+<span>🤖</span>
+<div class="card-title">Predict Score</div>
+</a>
+
+<a href="/result" class="card">
+<span>📈</span>
+<div class="card-title">Results</div>
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
