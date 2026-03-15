@@ -31,7 +31,8 @@ Models implemented include:
 
 • Linear Regression  
 • Random Forest Regressor  
-• Decision Tree Regressor  
+• Ridge Regression
+• Lasso Regression
 
 These models are trained on a dataset containing student lifestyle and academic attributes, and the best performing model is used for prediction.
 
@@ -51,7 +52,6 @@ Machine Learning & Data Analysis:
 Frontend:
 - HTML
 - CSS
-- JavaScript
 
 Visualization:
 - Matplotlib / Seaborn
