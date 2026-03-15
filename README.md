@@ -17,7 +17,6 @@ This project is a machine learning web application that predicts student exam pe
 - Pandas
 - Scikit-learn
 - HTML / CSS
-- JavaScript
 
 ## Project Structure
 
