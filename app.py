@@ -4,6 +4,7 @@ from markupsafe import Markup
 import pandas as pd
 import plotly.express as px
 import os
+import numpy as np
 import joblib
 
 # ---------------- LOAD ML MODEL ---------------- #
@@ -95,6 +96,11 @@ def upload_csv():
         else:
             return "Unsupported file format"
         
+        df.rename(columns={
+        "screen_time_hours": "screen_time",
+        "exam_anxiety": "exam_anxiety_score"
+    }, inplace=True)
+        
         # Ensure required columns exist
         if "motivation_level" not in df.columns:
             df["motivation_level"] = 5   # default value
@@ -129,6 +135,12 @@ def preprocessing():
         return redirect("/upload")
 
     df = pd.read_csv(DATA_FILE)
+    
+    # STANDARDIZE COLUMN NAMES
+    df.rename(columns={
+        "screen_time_hours": "screen_time",
+        "exam_anxiety": "exam_anxiety_score"
+    }, inplace=True)
 
     # BEFORE PREPROCESSING
     before_rows = df.shape[0]
@@ -137,6 +149,7 @@ def preprocessing():
 
     # HANDLE MISSING VALUES
     df.fillna(df.mean(numeric_only=True), inplace=True)
+    df.fillna("Unknown", inplace=True)
 
     # CLEAN DATASET
     df_clean = df
@@ -172,11 +185,11 @@ def save_student():
         "gender": request.form["gender"],
         "study_hours_per_day": float(request.form["study_hours_per_day"]),
         "attendance_percentage": float(request.form["attendance_percentage"]),
-        "screen_time_hours": float(request.form["screen_time_hours"]),
+        "screen_time": float(request.form["screen_time"]),
         "entertainment_hours": float(request.form["entertainment_hours"]),
         "stress_level": float(request.form["stress_level"]),
         "motivation_level": float(request.form["motivation_level"]),
-        "exam_anxiety": float(request.form["exam_anxiety"]),
+        "exam_anxiety_score": float(request.form["exam_anxiety"]),
         "major": request.form["major"],
         "exam_score": float(request.form["exam_score"]),
         "source": "Manual"
@@ -261,11 +274,11 @@ def update_student(index):
     df.loc[index, "gender"] = request.form["gender"]
     df.loc[index, "study_hours_per_day"] = float(request.form["study_hours_per_day"])
     df.loc[index, "attendance_percentage"] = float(request.form["attendance_percentage"])
-    df.loc[index, "screen_time_hours"] = float(request.form["screen_time_hours"])
+    df.loc[index, "screen_time"] = float(request.form["screen_time"])
     df.loc[index, "entertainment_hours"] = float(request.form["entertainment_hours"])
     df.loc[index, "stress_level"] = float(request.form["stress_level"])
     df.loc[index, "motivation_level"] = float(request.form["motivation_level"])
-    df.loc[index, "exam_anxiety"] = float(request.form["exam_anxiety"])
+    df.loc[index, "exam_anxiety_score"] = float(request.form["exam_anxiety_score"])
     df.loc[index, "major"] = request.form["major"]
     df.loc[index, "exam_score"] = float(request.form["exam_score"])
 
@@ -346,7 +359,7 @@ def eda():
     # Graph 4 - Screen Time vs Score
     fig4 = px.scatter(
         df,
-        x="screen_time_hours",
+        x="screen_time",
         y="exam_score",
         trendline="ols",
         opacity=0.5,
@@ -463,10 +476,10 @@ def predict_single_student():
 
     study = float(request.form["study_hours_per_day"])
     attendance = float(request.form["attendance_percentage"])
-    screen = float(request.form["screen_time_hours"])
+    screen = float(request.form["screen_time"])
     entertainment = float(request.form["entertainment_hours"])
     stress = float(request.form["stress_level"])
-    anxiety = float(request.form["exam_anxiety"])
+    anxiety = float(request.form["exam_anxiety_score"])
     gpa = float(request.form["previous_gpa"])
     motivation = float(request.form["motivation_level"])
     major = request.form["major"]
@@ -474,17 +487,21 @@ def predict_single_student():
     # Convert GPA scale
     if gpa > 4:
         gpa = (gpa / 10) * 4
+        
+    social_media = entertainment / 2
+    netflix = entertainment / 2
 
     input_dict = {
         "study_hours_per_day": study,
         "attendance_percentage": attendance,
         "screen_time": screen,
-        "entertainment_hours": entertainment,
         "stress_level": stress,
-        "exam_anxiety": anxiety,
+        "exam_anxiety_score": anxiety,
         "previous_gpa": gpa,
         "motivation_level": motivation,
-        "major": major
+        "major": major,
+        "social_media_hours": social_media, 
+        "netflix_hours": netflix,
     }
 
     input_df = pd.DataFrame([input_dict])
@@ -501,8 +518,14 @@ def predict_single_student():
     # Predict
     prediction = model.predict(scaled_data)
 
-    predicted_score = round(prediction[0], 2)
-    predicted_score = max(0, min(100, predicted_score))
+    # Convert prediction scale to exam score
+    predicted_score = prediction[0] 
+
+    # Round result
+    predicted_score = round(predicted_score, 2)
+
+    # Keep score between 0 and 100
+    predicted_score = np.clip(predicted_score, 0, 100)
 
     # Performance level
     if predicted_score >= 80:
@@ -549,6 +572,7 @@ def predict_single_student():
 
 @app.route("/bulk_predict", methods=["POST"])
 def bulk_predict():
+    
 
     file = request.files["dataset"]
 
@@ -560,12 +584,33 @@ def bulk_predict():
 
     else:
         return "Unsupported file format"
+    
+    required_columns = [
+    "study_hours_per_day",
+    "attendance_percentage",
+    "screen_time",
+    "entertainment_hours",
+    "stress_level",
+    "exam_anxiety_score",
+    "previous_gpa",
+    "motivation_level",
+    "major"
+    ]
+
+    for col in required_columns:
+        if col not in df.columns:
+            df[col] = 0
+    
+    # Remove exam_score column
+    if "exam_score" in df.columns:
+        df = df.drop("exam_score", axis=1)
 
     # Merge entertainment columns if needed
-    if "entertainment_hours" not in df.columns:
+    if "social_media_hours" not in df.columns:
+        df["social_media_hours"] = df["entertainment_hours"] / 2
 
-        if "social_media_hours" in df.columns and "netflix_hours" in df.columns:
-            df["entertainment_hours"] = df["social_media_hours"] + df["netflix_hours"]
+    if "netflix_hours" not in df.columns:
+        df["netflix_hours"] = df["entertainment_hours"] / 2
 
     # GPA conversion
     if "previous_gpa" in df.columns:
@@ -586,12 +631,24 @@ def bulk_predict():
     # Predict
     predictions = model.predict(scaled_data)
 
-    df["predicted_exam_score"] = predictions
-    df["predicted_exam_score"] = df["predicted_exam_score"].clip(0, 100)
+    # Convert to exam score scale
+    df["predicted_exam_score"] = predictions.clip(0,100)
 
     # Save output
     output_file = "predicted_results.csv"
-    df.to_csv(output_file, index=False)
+
+    if os.path.exists(output_file):
+
+        old_results = pd.read_csv(output_file)
+
+        combined = pd.concat([old_results, df], ignore_index=True)
+
+        combined.drop_duplicates(inplace=True)
+
+        combined.to_csv(output_file, index=False)
+
+    else:
+        df.to_csv(output_file, index=False)
 
     return render_template(
         "bulk_predict.html",
@@ -610,6 +667,64 @@ def download_result():
         "predicted_results.csv",
         as_attachment=True
     )
+    
+#----------------------RESULT-----------------------------#    
+@app.route("/result")
+def results():
+
+    if not os.path.exists("predicted_results.csv"):
+        return render_template("results.html", data_available=False)
+
+    df = pd.read_csv("predicted_results.csv")
+
+    total_predictions = len(df)
+    avg_score = round(df["predicted_exam_score"].mean(), 2)
+
+    excellent = len(df[df["predicted_exam_score"] >= 80])
+
+    good = len(df[(df["predicted_exam_score"] >= 60) & (df["predicted_exam_score"] < 80)])
+
+    average = len(df[(df["predicted_exam_score"] >= 40) & (df["predicted_exam_score"] < 60)])
+
+    poor = len(df[df["predicted_exam_score"] < 40])
+
+    fig = px.histogram(
+        df,
+        x="predicted_exam_score",
+        nbins=30,
+        title="Predicted Score Distribution"
+    )
+
+    chart = Markup(fig.to_html(full_html=False))
+    
+    category_data = {
+    "Category": ["Excellent", "Good", "Average", "Needs Improvement"],
+    "Count": [excellent, good, average, poor]
+}
+
+    cat_df = pd.DataFrame(category_data)
+
+    fig2 = px.pie(
+        cat_df,
+        names="Category",
+        values="Count",
+        title="Student Performance Distribution"
+    )
+
+    pie_chart = Markup(fig2.to_html(full_html=False))
+
+    return render_template(
+    "results.html",
+    data_available=True,
+    total_predictions=total_predictions,
+    avg_score=avg_score,
+    excellent=excellent,
+    good=good,
+    average=average,
+    poor=poor,
+    chart=chart,
+    pie_chart=pie_chart
+)
     
 # ---------------- RUN APP ---------------- #
 

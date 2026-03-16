@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Prediction Results</title>
+
+<style>
+
+body{
+    font-family:Poppins;
+    background:#f8fafc;
+    text-align:center;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    width:200px;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    color:#64748b;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.chart{
+    margin-top:40px;
+}
+
+.title-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    margin-top:20px;
+}
+
+.back-btn{
+    position:absolute;
+    left:0;
+    text-decoration:none;
+    font-size:28px;
+    color:#1e293b;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title-bar">
+<a href="/dashboard" class="back-btn">⮜</a>
+<h1>Prediction Results</h1>
+</div>
+
+{% if data_available %}
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Predictions</h3>
+<p>{{ total_predictions }}</p>
+</div>
+
+<div class="card">
+<h3>Average Score</h3>
+<p>{{ avg_score }}</p>
+</div>
+
+<div class="card">
+<h3>Excellent</h3>
+<p>{{ excellent }}</p>
+</div>
+
+<div class="card">
+<h3>Needs Improvement</h3>
+<p>{{ poor }}</p>
+</div>
+
+</div>
+
+<div class="chart">
+{{ chart | safe }}
+</div>
+
+<div class="chart">
+<h2>Performance Distribution</h2>
+{{ pie_chart | safe }}
+</div>
+
+{% else %}
+
+<p>No prediction results available yet.</p>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

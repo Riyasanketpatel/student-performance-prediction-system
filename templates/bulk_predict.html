@@ -1,84 +1,68 @@
 <!DOCTYPE html>
 
 <html>
-<head>
 
-<title>Bulk Prediction</title>
+<head>
+<title>Bulk Prediction Result</title>
 
 <style>
 
 body{
-font-family:Arial, Helvetica, sans-serif;
+font-family: Arial, Helvetica, sans-serif;
 background:#f4f6f9;
 margin:0;
 padding:0;
 }
 
 .container{
-width:70%;
-margin:auto;
-margin-top:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.result-box{
+width:460px;
 background:white;
 padding:40px;
 border-radius:12px;
-box-shadow:0 6px 18px rgba(0,0,0,0.1);
-}
-
-h1{
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
 text-align:center;
-margin-bottom:30px;
 }
 
-.upload-box{
-border:2px dashed #007bff;
-padding:40px;
-text-align:center;
-border-radius:10px;
-background:#fafafa;
-margin-bottom:30px;
+.result-box h2{
+margin-bottom:15px;
+color:#333;
 }
 
-input[type=file]{
-margin-top:20px;
+.result-box p{
+color:#555;
+font-size:15px;
 }
 
 button{
 margin-top:25px;
-padding:14px 30px;
-background:#007bff;
+padding:12px 25px;
+background:#22c55e;
 color:white;
 border:none;
 border-radius:6px;
-font-size:16px;
+font-size:15px;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-background:#0056b3;
+background:#16a34a;
 }
 
-.info{
-background:#f1f5ff;
-padding:20px;
-border-radius:8px;
-margin-top:25px;
-}
-
-.info h3{
-margin-top:0;
-}
-
-ul{
-margin-top:10px;
-}
-
-.back{
+.back-btn{
 position:absolute;
-left:30px;
-top:25px;
-font-size:24px;
+left:20px;
 text-decoration:none;
 color:#333;
+font-size:26px;
+font-weight:bold;
 }
 
 </style>
@@ -87,76 +71,63 @@ color:#333;
 
 <body>
 
-<a class="back" href="/prediction">⮜</a>
-
 <div class="container">
 
-<h1>Bulk Student Score Prediction</h1>
+<div class="result-box">
 
-<div class="upload-box">
+<h2 style="position:relative;">
+<a href="/prediction" class="back-btn">⮜</a>
+Prediction Completed
+</h2>
 
-<p><b>Upload a dataset to predict exam scores for multiple students.</b></p>
+<p>Your dataset has been successfully processed.</p>
+<p>The predicted exam scores are ready to download.</p>
 
-<form action="/bulk_predict" method="POST" enctype="multipart/form-data">
-
-<input type="file" name="dataset" accept=".csv,.xlsx" required>
-
-<br>
-
-<button type="submit">Run Prediction</button>
-
-</form>
+<button onclick="downloadFile()">
+Download Result File
+</button>
 
 </div>
 
-<div class="info">
-
-<h3>Required Dataset Columns</h3>
-
-<p>Your dataset should contain the following fields:</p>
-
-<ul>
-
-<li>study_hours_per_day</li>
-<li>attendance_percentage</li>
-<li>screen_time</li>
-<li>entertainment_hours</li>
-<li>stress_level</li>
-<li>exam_anxiety</li>
-<li>previous_gpa</li>
-<li>motivation_level</li>
-<li>major (optional)</li>
-
-</ul>
-
 </div>
 
-<div class="info">
 
-<h3>Notes</h3>
+<script>
 
-<ul>
+function downloadFile(){
 
-<li>Previous GPA can be entered on a <b>0–10 scale</b>. The system will automatically convert it to the <b>0–4 scale</b> used during training.</li>
+    window.location.href="/download_result";
 
-<li>If your dataset contains <b>social_media_hours</b> and <b>netflix_hours</b>, the system will automatically combine them into <b>entertainment_hours</b>.</li>
+    showToast("Prediction file downloaded successfully");
 
-<li>The output dataset will contain a new column called <b>predicted_exam_score</b>.</li>
+}
 
-</ul>
+function showToast(message){
 
-</div>
+    let toast=document.createElement("div");
 
-{% if download_ready %}
+    toast.innerText=message;
 
-<br><br>
+    toast.style.position="fixed";
+    toast.style.top="20px";
+    toast.style.right="20px";
+    toast.style.background="#22c55e";
+    toast.style.color="white";
+    toast.style.padding="12px 18px";
+    toast.style.borderRadius="6px";
+    toast.style.boxShadow="0px 3px 10px rgba(0,0,0,0.2)";
+    toast.style.zIndex="9999";
+    toast.style.fontSize="14px";
 
-<a href="/download_result">
-<button>Download Predicted Dataset</button>
-</a>
+    document.body.appendChild(toast);
 
-{% endif %}
-</div>
+    setTimeout(()=>{
+        toast.remove();
+    },3000);
+
+}
+
+</script>
 
 </body>
 
